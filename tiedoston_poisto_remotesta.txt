@@ -1,0 +1,221 @@
+TIEDOSTON POISTO remotesta
+-------------------------
+Yritetään poistaa README.md atacama:sta MUTTA ei sitten haluttukaan nostalgiasyystä koska se oli ensimmäinen commit 2v sitten.
+joten luodaan, lisätään ja poistetaan tiedosto poista.txt.
+Linkkejä:
+http://stackoverflow.com/questions/1143796/remove-a-file-from-a-git-repository-without-deleting-it-from-the-local-filesyste
+https://coderwall.com/p/thzzka/git-remove-file-from-repository-and-keep-it-locally
+
+
+Muista copioida file talteen ennen git rm komentoa (tallesssa tmp/).
+
+>git rm README.md
+
+C:\Users\Pekka Aarnio\Documents\GitHub> cd .\atacama
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -0 !]> git status
+# On branch master
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       tiedoston_poisto_remotesta.txt
+nothing added to commit but untracked files present (use "git add" to track)
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -0 !]> git remote
+origin
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -0 !]> git remote -v
+origin  https://github.com/paarnio/atacama.git (fetch)
+origin  https://github.com/paarnio/atacama.git (push)
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -0 !]> git rm README.md
+rm 'README.md'
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +0 ~0 -1 | +1 ~0 -0 !]> git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#       deleted:    README.md (HUOM: VIHREÄ TEKSTI)
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       tiedoston_poisto_remotesta.txt
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +0 ~0 -1 | +1 ~0 -0 !]> git rm --cached
+usage: git rm [options] [--] <file>...
+
+    -n, --dry-run         dry run
+    -q, --quiet           do not list removed files
+    --cached              only remove from the index
+    -f, --force           override the up-to-date check
+    -r                    allow recursive removal
+    --ignore-unmatch      exit with a zero status even if nothing matched
+
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +0 ~0 -1 | +1 ~0 -0 !]> git reset HEAD README.md
+
+Unstaged changes after reset:
+D       README.md
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]> git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       deleted:    README.md   (HUOM: NYT PUNAINEN TEKSTI)
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       tiedoston_poisto_remotesta.txt
+no changes added to commit (use "git add" and/or "git commit -a")
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]> git pull origin
+Already up-to-date.
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]> git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       deleted:    README.md      (HUOM: NYT PUNAINEN TEKSTI)
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       tiedoston_poisto_remotesta.txt
+no changes added to commit (use "git add" and/or "git commit -a")
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]> git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       deleted:    README.md  (HUOM: NYT PUNAINEN TEKSTI)
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       poista.txt
+#       tiedoston_poisto_remotesta.txt
+no changes added to commit (use "git add" and/or "git commit -a")
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +2 ~0 -1 !]> git add poista.txt
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -0 | +1 ~0 -1 !]> git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#       new file:   poista.txt
+#
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       deleted:    README.md   (HUOM: NYT PUNAINEN TEKSTI)
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       tiedoston_poisto_remotesta.txt
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -0 | +1 ~0 -1 !]> git commit -m "uusi tied
+osto poista.txt"
+[master db3a23a] uusi tiedosto poista.txt
+ 1 file changed, 2 insertions(+)
+ create mode 100644 poista.txt
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]> git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       deleted:    README.md    (HUOM: NYT PUNAINEN TEKSTI)
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       tiedoston_poisto_remotesta.txt
+no changes added to commit (use "git add" and/or "git commit -a")
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]> git push origin
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 311 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+To https://github.com/paarnio/atacama.git
+   82e60d9..db3a23a  master -> master
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]> git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       deleted:    README.md    (HUOM: NYT PUNAINEN TEKSTI)
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       tiedoston_poisto_remotesta.txt
+no changes added to commit (use "git add" and/or "git commit -a")
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]> git rm poista.txt
+rm 'poista.txt'
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +0 ~0 -1 | +1 ~0 -1 !]> git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#       deleted:    poista.txt   (Huom: vihreällä)
+#
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       deleted:    README.md    (HUOM: NYT PUNAINEN TEKSTI)
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       tiedoston_poisto_remotesta.txt
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +0 ~0 -1 | +1 ~0 -1 !]> git commit -m "poistetaa
+n poista.txt"
+[master 5088672] poistetaan poista.txt
+ 1 file changed, 2 deletions(-)
+ delete mode 100644 poista.txt
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]> git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       deleted:    README.md   (HUOM: NYT PUNAINEN TEKSTI)
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       tiedoston_poisto_remotesta.txt
+no changes added to commit (use "git add" and/or "git commit -a")
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]> git push origin
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 221 bytes | 0 bytes/s, done.
+Total 2 (delta 1), reused 0 (delta 0)
+To https://github.com/paarnio/atacama.git
+   db3a23a..5088672  master -> master
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]>
+
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]> git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       deleted:    README.md   (HUOM: NYT PUNAINEN TEKSTI)
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       tiedoston_poisto_remotesta.txt
+no changes added to commit (use "git add" and/or "git commit -a")
+C:\Users\Pekka Aarnio\Documents\GitHub\atacama [master +1 ~0 -1 !]>
+
+
